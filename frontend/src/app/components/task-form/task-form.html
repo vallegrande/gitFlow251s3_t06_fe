@@ -1,0 +1,8 @@
+<div class="max-w-md mx-auto mt-10">
+    <form (ngSubmit)="createTask()" class="space-y-4">
+        <input [(ngModel)]="task.title" name="title" placeholder="Título" class="w-full p-2 border">
+        <textarea [(ngModel)]="task.description" name="description" placeholder="Descripción" class="w-full p-2 border"></textarea>
+        <input [(ngModel)]="task.status" name="status" placeholder="Estado" class="w-full p-2 border">
+        <button type="submit" class="bg-blue-500 text-white p-2">Crear Tarea</button>
+    </form>
+</div>
