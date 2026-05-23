@@ -1,20 +1,35 @@
 <div class="max-w-2xl mx-auto mt-10">
 
-  <h2 class="text-2xl">Lista de Tareas</h2>
+  <h2 class="text-2xl font-bold mb-4">
+    Lista de Tareas
+  </h2>
 
   <input
     [(ngModel)]="filter"
+    (input)="filterTasks()"
     placeholder="Filtrar por estado"
-    class="w-full p-2 border"
+    class="w-full p-2 border rounded mb-4"
   >
 
-  <ul class="mt-4 space-y-2">
+  <ul class="space-y-2">
 
-    <li *ngFor="let task of filteredTasks" class="p-2 border">
+    <li
+      *ngFor="let task of filteredTasks"
+      class="p-3 border rounded flex justify-between items-center"
+    >
 
-      <strong>{{ task.title }}</strong>:
-      {{ task.description }}
-      ({{ task.status }})
+      <span>
+        <strong>{{ task.title }}</strong> :
+        {{ task.description }}
+        ({{ task.status }})
+      </span>
+
+      <button
+        (click)="deleteTask(task.id!)"
+        class="bg-red-500 text-white px-3 py-1 rounded"
+      >
+        Eliminar
+      </button>
 
     </li>
 
