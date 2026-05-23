@@ -1,0 +1,23 @@
+<div class="max-w-2xl mx-auto mt-10">
+
+  <h2 class="text-2xl">Lista de Tareas</h2>
+
+  <input
+    [(ngModel)]="filter"
+    placeholder="Filtrar por estado"
+    class="w-full p-2 border"
+  >
+
+  <ul class="mt-4 space-y-2">
+
+    <li *ngFor="let task of filteredTasks" class="p-2 border">
+
+      <strong>{{ task.title }}</strong>:
+      {{ task.description }}
+      ({{ task.status }})
+
+    </li>
+
+  </ul>
+
+</div>

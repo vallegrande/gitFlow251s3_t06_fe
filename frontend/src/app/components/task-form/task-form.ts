@@ -1,16 +1,26 @@
 import { Component } from '@angular/core';
-import { TaskService, Task } from '../../services/task.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { TaskService, Task } from '../../services/task';
+
 @Component({
-    selector: 'app-task-form',
-    templateUrl: './task-form.component.html'
+  selector: 'app-task-form',
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  templateUrl: './task-form.html',
+  styleUrls: ['./task-form.css']
 })
 export class TaskFormComponent {
-    task: Task = { title: '', description: '', status: '' };
-    constructor(private taskService: TaskService) {}
-    createTask() {
-        this.taskService.createTask(this.task).subscribe(() => {
-            alert('Tarea creada');
-            this.task = { title: '', description: '', status: '' };
-        });
-    }
+
+  task: Task = {
+    title: '',
+    description: '',
+    status: ''
+  };
+
+  constructor(private taskService: TaskService) {}
+
+  createTask(): void {
+    console.log(this.task);
+  }
 }
