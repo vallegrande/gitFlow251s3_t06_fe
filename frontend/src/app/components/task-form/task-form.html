@@ -1,32 +1,58 @@
-<div class="max-w-md mx-auto mt-10">
+<div class="form-container">
+  <div class="form-card">
+    <h2 class="form-title">✨ Crear Nueva Tarea</h2>
+    
+    <form (ngSubmit)="createTask()" class="task-form">
+      
+      <div class="form-group">
+        <label for="title" class="form-label">Título</label>
+        <input
+          id="title"
+          [(ngModel)]="task.title"
+          name="title"
+          placeholder="Ej: Completar informe mensual"
+          class="form-input"
+          required
+        >
+      </div>
 
-  <form (ngSubmit)="createTask()" class="space-y-4">
+      <div class="form-group">
+        <label for="description" class="form-label">Descripción</label>
+        <textarea
+          id="description"
+          [(ngModel)]="task.description"
+          name="description"
+          placeholder="Describe los detalles de la tarea..."
+          class="form-textarea"
+          rows="4"
+          required
+        ></textarea>
+      </div>
 
-    <input
-      [(ngModel)]="task.title"
-      name="title"
-      placeholder="Título"
-      class="w-full p-2 border"
-    >
+      <div class="form-group">
+        <label for="status" class="form-label">Estado</label>
+        <select
+          id="status"
+          [(ngModel)]="task.status"
+          name="status"
+          class="form-select"
+          required
+        >
+          <option value="" disabled>Selecciona un estado</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="En Progreso">En Progreso</option>
+          <option value="Completada">Completada</option>
+        </select>
+      </div>
 
-    <textarea
-      [(ngModel)]="task.description"
-      name="description"
-      placeholder="Descripción"
-      class="w-full p-2 border"
-    ></textarea>
+      <button 
+        type="submit" 
+        class="btn-submit"
+        [disabled]="isSubmitting"
+      >
+        {{ isSubmitting ? '⏳ Creando...' : '✅ Crear Tarea' }}
+      </button>
 
-    <input
-      [(ngModel)]="task.status"
-      name="status"
-      placeholder="Estado"
-      class="w-full p-2 border"
-    >
-
-    <button type="submit" class="bg-blue-500 text-white p-2">
-      Crear Tarea
-    </button>
-
-  </form>
-
+    </form>
+  </div>
 </div>

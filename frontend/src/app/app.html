@@ -1,2 +1,19 @@
-<h1 class="text-3xl text-center mt-10">Gestor de Tareas</h1>
-<router-outlet></router-outlet>
+<div class="app-container">
+  <header class="app-header">
+    <div class="header-content">
+      <h1 class="app-title">📋 {{ title() }}</h1>
+      <nav class="app-nav">
+        <a routerLink="/tasks" class="nav-link">Ver Tareas</a>
+        <a routerLink="/create" class="nav-link nav-link-primary">+ Nueva Tarea</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+  
+  <footer class="app-footer">
+    <p>Gestor de Tareas - Angular 17 Standalone</p>
+  </footer>
+</div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { TaskService, Task } from '../../services/task';
 
 @Component({
@@ -18,9 +19,32 @@ export class TaskFormComponent {
     status: ''
   };
 
-  constructor(private taskService: TaskService) {}
+  isSubmitting = false;
+
+  constructor(
+    private taskService: TaskService,
+    private router: Router
+  ) {}
 
   createTask(): void {
-    console.log(this.task);
+    if (!this.task.title || !this.task.description || !this.task.status) {
+      alert('Por favor, completa todos los campos');
+      return;
+    }
+
+    this.isSubmitting = true;
+
+    this.taskService.createTask(this.task).subscribe({
+      next: (response) => {
+        console.log('Tarea creada:', response);
+        alert('✅ Tarea creada exitosamente');
+        this.router.navigate(['/tasks']);
+      },
+      error: (error) => {
+        console.error('Error al crear tarea:', error);
+        alert('❌ Error al crear la tarea. Verifica que el backend esté corriendo.');
+        this.isSubmitting = false;
+      }
+    });
   }
 }

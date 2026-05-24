@@ -1,8 +1,72 @@
-<div class="max-w-md mx-auto mt-10">
-  <form (ngSubmit)="updateTask()" class="space-y-4">
-    <input [(ngModel)]="task.title" name="title" placeholder="Título" class="w-full p-2 border">
-    <textarea [(ngModel)]="task.description" name="description" placeholder="Descripción" class="w-full p-2 border"></textarea>
-    <input [(ngModel)]="task.status" name="status" placeholder="Estado" class="w-full p-2 border">
-    <button type="submit" class="bg-green-500 text-white p-2 w-full">Actualizar Tarea</button>
-  </form>
+<div class="edit-container">
+  <div class="edit-card">
+    <h2 class="edit-title">✏️ Editar Tarea</h2>
+    
+    <div *ngIf="isLoading" class="loading-state">
+      <div class="spinner"></div>
+      <p>Cargando tarea...</p>
+    </div>
+
+    <form *ngIf="!isLoading" (ngSubmit)="updateTask()" class="edit-form">
+      
+      <div class="form-group">
+        <label for="title" class="form-label">Título</label>
+        <input
+          id="title"
+          [(ngModel)]="task.title"
+          name="title"
+          placeholder="Título de la tarea"
+          class="form-input"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="form-label">Descripción</label>
+        <textarea
+          id="description"
+          [(ngModel)]="task.description"
+          name="description"
+          placeholder="Descripción de la tarea"
+          class="form-textarea"
+          rows="4"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="status" class="form-label">Estado</label>
+        <select
+          id="status"
+          [(ngModel)]="task.status"
+          name="status"
+          class="form-select"
+          required
+        >
+          <option value="" disabled>Selecciona un estado</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="En Progreso">En Progreso</option>
+          <option value="Completada">Completada</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button 
+          type="button"
+          (click)="cancel()"
+          class="btn-cancel"
+        >
+          ❌ Cancelar
+        </button>
+        <button 
+          type="submit" 
+          class="btn-update"
+          [disabled]="isSubmitting"
+        >
+          {{ isSubmitting ? '⏳ Actualizando...' : '✅ Actualizar Tarea' }}
+        </button>
+      </div>
+
+    </form>
+  </div>
 </div>
