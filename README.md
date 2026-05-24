@@ -261,6 +261,8 @@ git flow release finish <version>   # Finalizar lanzamiento
 ## 📸 Imágenes del Proyecto
 
 
+<img width="1600" height="722" alt="WhatsApp Image 2026-05-23 at 8 10 15 PM" src="https://github.com/user-attachments/assets/7eda9b97-4c83-47da-92d2-da6a933e60c5" />
+<img width="1600" height="799" alt="WhatsApp Image 2026-05-23 at 8 10 38 PM" src="https://github.com/user-attachments/assets/6f2823d6-8a96-48e9-92b4-c4960db4acdd" />
 
 
 ### Pantalla Principal - Lista de Tareas
